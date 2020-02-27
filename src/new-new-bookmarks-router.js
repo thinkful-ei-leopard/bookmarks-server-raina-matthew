@@ -6,6 +6,7 @@ const bodyParser = express.json();
 const bookmarksRouter = express.Router();
 const {isWebUri} = require('valid-url');
 const bookmarks_service = require('./bookmarks_service');
+
 bookmarksRouter
   .route('/bookmarks')
   .get((req, res, next) => {
@@ -73,7 +74,6 @@ bookmarksRouter
       })
       .catch(next);
   })
-
   .delete((req,res) => {
     const { id } = req.params;
     const index = bookmarks.findIndex(bookmark => bookmark.id === id);
